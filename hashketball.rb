@@ -1,6 +1,6 @@
 #require "pry"
 
-def game_hash
+def game_hash 
     {
         home: {
             team_name: "Brooklyn Nets",
@@ -15,7 +15,7 @@ def game_hash
                     assists: 12,
                     steals: 3,
                     blocks: 1,
-                    slam_dunks: 1
+                    slam_dunks: 1 
                 },
                 {
                     player_name: "Reggie Evans",
@@ -26,7 +26,7 @@ def game_hash
                     assists: 12,
                     steals: 12,
                     blocks: 12,
-                    slam_dunks: 7
+                    slam_dunks: 7 
                 },
                 {
                     player_name: "Brook Lopez",
@@ -48,7 +48,7 @@ def game_hash
                     assists: 6,
                     steals: 3,
                     blocks: 8,
-                    slam_dunks: 5
+                    slam_dunks: 5 
                 },
                 {
                     player_name: "Jason Terry",
@@ -59,7 +59,7 @@ def game_hash
                     assists: 2,
                     steals: 4,
                     blocks: 11,
-                    slam_dunks: 1
+                    slam_dunks: 1 
                 }
             ]
         },
@@ -77,7 +77,7 @@ def game_hash
                     assists: 1,
                     steals: 2,
                     blocks: 7,
-                    slam_dunks: 2
+                    slam_dunks: 2 
                 },
                 {
                     player_name: "Bismack Biyombo",
@@ -88,7 +88,7 @@ def game_hash
                     assists: 7,
                     steals: 22,
                     blocks: 15,
-                    slam_dunks: 10
+                    slam_dunks: 10 
                 },
                 {
                     player_name: "DeSagna Diop",
@@ -121,7 +121,7 @@ def game_hash
                     assists: 12,
                     steals: 7,
                     blocks: 5,
-                    slam_dunks: 12
+                    slam_dunks: 12 
                 }
             ]
         }
@@ -137,12 +137,12 @@ def num_points_scored(player_given)
                 return player[:points] if player[:player_name] == player_given
             end
         end
-    end
+    end    
 end
 
 def shoe_size(player_given)
     game_hash.each do |place_k, place_v|
-        place_v.each do  |team_info_k, team_info_v|
+        place_v.each do  |team_info_k, team_info_v| 
             next unless team_info_k == :players
 
             team_info_v.each do |player|
@@ -168,13 +168,13 @@ def player_numbers(team)
     jersey_numbers = []
 
     game_hash.each do |place_k, place_v|
-        place_v.each do |team_info_k, team_info_v|
+        place_v.each do |team_info_k, team_info_v|  
             if place_v[:team_name] == team
                 next unless team_info_k == :players
 
                 team_info_v.each do |player|
                     jersey_numbers << player[:number]
-                end
+                end 
             end
         end
     end
@@ -241,13 +241,13 @@ def most_points_scored
     return highest_score_player
 end
 
-def winning_team
+def winning_team 
     score = {
         "Brooklyn Nets" => {score: 0},
         "Charlotte Hornets" => {score: 0}
     }
 
-    game_hash.each do |place_k, place_v|
+    game_hash.each do |place_k, place_v| 
 
         if place_v[:team_name] == "Brooklyn Nets"
             place_v.each do |team_info_k, team_info_v|
@@ -256,7 +256,7 @@ def winning_team
                 team_info_v.each do |player|
                     score["Brooklyn Nets"][:score] += player[:points]
                 end
-            end
+            end    
         end
 
         if place_v[:team_name] == "Charlotte Hornets"
@@ -266,14 +266,14 @@ def winning_team
                 team_info_v.each do |player|
                     score["Charlotte Hornets"][:score] += player[:points]
                 end
-            end
+            end    
         end
     end
 
     score.max_by {|team| team[1][:score]}.first
 end
 
-def player_with_longest_name
+def player_with_longest_name 
     longest_name = ""
 
     game_hash.each do |place_k, place_v|
@@ -293,4 +293,4 @@ def long_name_steals_a_ton?
     longest_name = player_with_longest_name
 end
 
-long_name_steals_a_ton
+long_name_steals_a_ton?
